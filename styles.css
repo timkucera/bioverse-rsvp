@@ -43,7 +43,7 @@ h1 {
 
 .highlight {
     color: var(--dark);
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Syne Mono', monospace;
     font-weight: normal;
     background-color: var(--light-green);
     padding: 0rem 0.5rem;
