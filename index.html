@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioverse - Datasets and Benchmarks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:wght@400;700&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ready for the <span class="highlight">bioverse</span>?</h1>
+        <p class="description">Datasets and benchmarks for deep learning on biomolecule structures.</p>
+        <form id="emailForm" action="https://formsubmit.co/submit@bioverse.rsvp" method="POST">
+            <input type="email" name="email" id="emailInput" placeholder="your@email.com" required>
+            <button type="submit" id="submitButton">Join the waiting list</button>
+            <p id="confirmationMessage" class="confirmation-message hidden">Great! We'll keep you posted.</p>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('emailForm');
+        const button = document.getElementById('submitButton');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        const emailInput = document.getElementById('emailInput');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+            
+            // Disable button and show confirmation
+            button.disabled = true;
+            button.classList.add('disabled');
+            confirmationMessage.classList.remove('hidden');
+            
+            // Here you can add your actual form submission logic
+            // For example, using fetch to submit to your backend
+            console.log('Form submitted with email:', emailInput.value);
+        });
+
+        emailInput.addEventListener('input', () => {
+            button.disabled = false;
+            button.classList.remove('disabled');
+            confirmationMessage.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
