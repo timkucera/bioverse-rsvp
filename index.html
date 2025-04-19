@@ -40,6 +40,7 @@
         <form id="emailForm" action="https://formsubmit.co/submit@bioverse.rsvp" method="POST">
             <input type="email" name="email" id="emailInput" placeholder="your@email.com" required>
             <button type="submit" id="submitButton">Join the waiting list</button>
+            <input type="hidden" name="_next" value="https://bioverse.rsvp?submitted=true">
             <p id="confirmationMessage" class="confirmation-message hidden">Great! We'll keep you posted.</p>
         </form>
     </div>
@@ -48,6 +49,15 @@
         const button = document.getElementById('submitButton');
         const confirmationMessage = document.getElementById('confirmationMessage');
         const emailInput = document.getElementById('emailInput');
+
+        // Check if redirected after submission
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('submitted') === 'true') {
+            button.disabled = true;
+            button.classList.add('disabled');
+            confirmationMessage.classList.remove('hidden');
+            emailInput.value = ''; // Clear the input
+        }
 
         form.addEventListener('submit', (e) => {
             //e.preventDefault(); // Prevent default form submission
